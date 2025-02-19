@@ -56,7 +56,7 @@ namespace chess
 
             if(estaEmXeque(jogadorAtual))
             {
-                desfazMovimento(origem, destino, Peca Capturada);
+                desfazMovimento(origem, destino, pecaCapturada);
                 throw new TabuleiroException("Você não pode se colocar em xeque!");
             }
             if(estaEmXeque(adversaria(jogadorAtual)))
@@ -67,8 +67,15 @@ namespace chess
             {
                 xeque = false;
             }
-            turno++;
-            mudaJogador();
+            if(testeXequeMate(adversaria(jogadorAtual)))
+            {
+                terminada = true;
+            } 
+            else
+            {
+                turno++;
+                mudaJogador();
+            }
         }
 
         public void validarPosicaoDeOrigem(Posicao pos)
@@ -175,6 +182,39 @@ namespace chess
             }
             return false;
         }
+
+        public bool testeXequeMate(Cor cor)
+        {
+            if(!estaEmXeque(cor))
+            {
+                return false;
+            }
+            foreach(Peca x in pecasEmJogo(cor))
+            {
+                bool[,] mat = x.movimentosPossiveis();
+                for(int i = 0; i < tab.linhas; i++)
+                {
+                    for(int j = 0; j < tab.colunas; j++)
+                    {
+                        if(mat[i, j])
+                        {
+                            Posicao origem = new Posicao(i, j);
+                            Posicao destino = new Posicao(i, j);
+                            Peca pecaCapturada = executaMovimento(origem, destino);
+                            bool testeXeque = estaEmXeque(cor);
+                            desfazMovimento(origem, destino, pecaCapturada);
+                            if(!testeXeque)
+                            {
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+            return true;
+        }
+
+
         public void colocarNovaPeca(char coluna, int linha, Peca peca)
         {
             tab.colocarPeca(peca, new PosicaoXadrez(coluna, linha).toPosicao());
