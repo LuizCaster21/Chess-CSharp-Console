@@ -11,14 +11,9 @@ namespace ChessConsole
         {
             try
             {
-                Tabuleiro tab = new Tabuleiro(8, 8);
+                PartidaDeXadrez partida = new PartidaDeXadrez();
 
-
-                tab.colocarPeca(new Torre(Cor.Preta, tab), new Posicao(0, 0));
-                tab.colocarPeca(new Torre(Cor.Branca, tab), new Posicao(0, 7));
-                tab.colocarPeca(new Rei(Cor.Preta, tab), new Posicao(0, 4));
-
-                Tela.imprimirTabuleiro(tab);
+                Tela.imprimirTabuleiro(partida.tab);
             }
             catch(TabuleiroException e)
             {
