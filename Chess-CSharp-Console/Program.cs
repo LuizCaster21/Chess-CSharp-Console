@@ -1,2 +1,14 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using System;
+using Tabuleiro;
+
+namespace ChessConsole
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Posicao p = new Posicao(1, 2);
+            Console.WriteLine("Posição: " + p);
+        }
+    }
+}
