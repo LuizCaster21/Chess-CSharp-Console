@@ -16,6 +16,9 @@ namespace ChessConsole
                 {
                     Console.Clear();
                     Tela.imprimirTabuleiro(partida.tab);
+                    Console.WriteLine();
+                    Console.WriteLine("Turno: " + partida.turno);
+                    Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
 
                     Console.Write("Origem: ");
                     Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
@@ -25,10 +28,10 @@ namespace ChessConsole
                     Console.Clear();
                     Tela.imprimirTabuleiro(partida.tab, posicoesPossiveis);
 
-                    Console.Write("Destino:");
+                    Console.Write("Destino: ");
                     Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
 
-                    partida.executaMovimento(origem, destino);
+                    partida.realizaJogada(origem, destino);
                 }
             }
             catch(TabuleiroException e)
