@@ -48,6 +48,7 @@ namespace ChessConsole
             {
                 Console.WriteLine(e.Message);
             }
+            Console.ReadLine ();
         }
     }
 }
