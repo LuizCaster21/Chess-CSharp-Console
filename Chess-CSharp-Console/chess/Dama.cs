@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using tabuleiro;
 
-namespace Chess_CSharp_Console.chess
+namespace chess
 {
-    internal class Dama
+    class Dama : Peca
     {
+        public Dama(Cor cor, Tabuleiro tab) : base(cor, tab)
+        {
+
+        }
+
+        public override string? ToString()
+        {
+            return "D";
+        }
     }
 }

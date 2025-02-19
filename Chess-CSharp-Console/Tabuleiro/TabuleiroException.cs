@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Chess_CSharp_Console.tabuleiro
+namespace tabuleiro
 {
-    internal class TabuleiroException
+    class TabuleiroException : Exception
     {
+        public TabuleiroException(string msg) : base(msg) { }
     }
 }
